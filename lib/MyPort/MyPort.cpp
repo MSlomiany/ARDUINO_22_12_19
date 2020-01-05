@@ -19,6 +19,7 @@
 
 #include <avr/io.h>
 #include "MyPort.hpp"
+#include <avr/delay.h>
 
 /*
     Konstruktor nowego portu
