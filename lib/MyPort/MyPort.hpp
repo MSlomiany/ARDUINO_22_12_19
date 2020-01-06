@@ -24,7 +24,7 @@
 class NewPort
 {
 public:
-    NewPort(volatile uint8_t *port, volatile uint8_t *direction, uint8_t mask);
+    NewPort(volatile uint8_t &port, volatile uint8_t &direction, uint8_t mask);
     void output() const;
     void input() const;
     void set() const;
@@ -32,8 +32,8 @@ public:
     void invert() const;
 
 private:
-    volatile uint8_t *port_;
-    volatile uint8_t *direction_;
+    volatile uint8_t &port_;
+    volatile uint8_t &direction_;
     uint8_t mask_;
 };
 

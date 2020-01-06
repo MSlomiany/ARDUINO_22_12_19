@@ -24,7 +24,7 @@
     Konstruktor nowego portu
     NewPort nazwa_portu(&PORTx, &DDRx, maska_bitowa)
 */
-NewPort::NewPort(volatile uint8_t *port, volatile uint8_t *direction, uint8_t mask)
+NewPort::NewPort(volatile uint8_t &port, volatile uint8_t &direction, uint8_t mask)
     : port_(port), direction_(direction), mask_(mask)
 {
     //konstruktor
@@ -36,7 +36,7 @@ NewPort::NewPort(volatile uint8_t *port, volatile uint8_t *direction, uint8_t ma
 */
 void NewPort::output() const
 {
-    *direction_ |= mask_;
+    direction_ |= mask_;
 }
 
 /*
@@ -45,8 +45,8 @@ void NewPort::output() const
 */
 void NewPort::input() const
 {
-    uint8_t helpmask = (*direction_ & mask_);
-    *direction_ ^= helpmask;
+    uint8_t helpmask = (direction_ & mask_);
+    direction_ ^= helpmask;
 }
 
 /*
@@ -55,7 +55,7 @@ void NewPort::input() const
 */
 void NewPort::set() const
 {
-    *port_ |= mask_;
+    port_ |= mask_;
 }
 
 /*
@@ -64,8 +64,8 @@ void NewPort::set() const
 */
 void NewPort::clear() const
 {
-    uint8_t helpmask = (*port_ & mask_);
-    *port_ ^= helpmask;
+    uint8_t helpmask = (port_ & mask_);
+    port_ ^= helpmask;
 }
 
 /*
@@ -74,5 +74,5 @@ void NewPort::clear() const
 */
 void NewPort::invert() const
 {
-    *port_ ^= mask_;
+    port_ ^= mask_;
 }

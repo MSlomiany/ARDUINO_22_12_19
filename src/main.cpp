@@ -51,10 +51,10 @@ ISR(TIMER1_OVF_vect)
 int main()
 {
     //INICJALIZACJA PORTÓW
-    NewPort Led(&PORTD, &DDRD, mask_led);
-    NewPort Pwm(&PORTD, &DDRD, mask_pwm);
-    NewPort Debug(&PORTD, &DDRD, mask_debug);
-    NewPort Test(&PORTD, &DDRD, mask_test);
+    NewPort Led(PORTD, DDRD, mask_led);
+    NewPort Pwm(PORTD, DDRD, mask_pwm);
+    NewPort Debug(PORTD, DDRD, mask_debug);
+    NewPort Test(PORTD, DDRD, mask_test);
     Led.output();
     Pwm.output();
     Debug.output();
