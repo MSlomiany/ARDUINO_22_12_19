@@ -60,6 +60,7 @@ int main()
     Debug.output();
     Test.output();
     Led.set();
+    Test.set();
     //ZEROWANIE LICZNIKÓW
     _20_MS_FLAG = FALSE;
     _1_SEC_FLAG = FALSE;
