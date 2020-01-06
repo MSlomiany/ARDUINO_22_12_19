@@ -24,6 +24,11 @@ uint64_t _MASTER_SEC_COUNTER; //licznik sekund
 uint8_t mask_led = ((1 << PD2) | (1 << PD3));
 uint8_t mask_pwm = ((1 << PD5) | (1 << PD6));
 uint8_t mask_debug = ((1 << PD4));
+uint8_t mask_test = ((1 << PD7));
+
+/***********************MASKA FUNKCJI CHAIN**********************/
+
+uint8_t sos_chain[] = {1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 2};
 
 /***********************FUNKCJA PRZERWANIA - TIMER 1*************/
 
@@ -42,29 +47,6 @@ ISR(TIMER1_OVF_vect)
     }
 }
 
-//void PWM
-void FunctionPWM(NewPort port)
-{
-    static uint16_t PWM_COUNTER = 0x00;
-    if (PWM_COUNTER < 0xFF)
-    {
-        port.set();
-        OCR0A++;
-        OCR0B++;
-        PWM_COUNTER++;
-    }
-    else
-    {
-        port.clear();
-        OCR0A--;
-        OCR0B--;
-        if (OCR0B == 0x00)
-        {
-            PWM_COUNTER = 0x00;
-        }
-    }
-}
-
 /***********************FUNKCJA GŁÓWNA***************************/
 int main()
 {
@@ -72,9 +54,11 @@ int main()
     NewPort Led(&PORTD, &DDRD, mask_led);
     NewPort Pwm(&PORTD, &DDRD, mask_pwm);
     NewPort Debug(&PORTD, &DDRD, mask_debug);
+    NewPort Test(&PORTD, &DDRD, mask_test);
     Led.output();
     Pwm.output();
     Debug.output();
+    Test.output();
     Led.set();
     //ZEROWANIE LICZNIKÓW
     _20_MS_FLAG = FALSE;
@@ -123,13 +107,14 @@ int main()
         if (_20_MS_FLAG == TRUE)
         {
             _20_MS_FLAG = FALSE;
-            FunctionPWM(Debug);
-        } //KONIEC MODUŁU PWM
+            FunPWM(Debug); //, &OCR0A, &OCR0B)
+        }                  //KONIEC MODUŁU PWM
         //MODUŁ SOS
         if (_1_SEC_FLAG == TRUE) //wywołanie co 1 sekundę
         {
             _1_SEC_FLAG = FALSE; //na samym początku zerowanie flagi
             FunSOS(Led);
+            FunChain(Test, sos_chain);
         } //KONIEC MODUŁU SOS
     }
     return 0;

@@ -17,8 +17,9 @@
     0. You just DO WHAT THE FUCK YOU WANT TO.
 */
 
-#include <avr/io.h>
 #include <MyFunction.hpp>
+#include <avr/io.h>
+#include <avr/interrupt.h>
 
 #include <MyPort.hpp>
 
@@ -67,5 +68,61 @@ void FunSOS(NewPort port)
             _SEC_COUNTER = 0; //zerowanie lokalnego licznika funkcji SOS
         }
         break;
+    }
+}
+
+/*
+    Funkcja PWM
+    FunPWM(port, &rejestrPWM1, &rejestrPWM2)
+    Wykorzystuje klasę NewPort z biblioteki MyPort
+*/
+void FunPWM(NewPort port) //, volatile uint8_t *dutyCycle1, volatile uint8_t *dutyCycle2)
+{
+    static uint16_t PWM_COUNTER;
+    if (PWM_COUNTER < 0xFF)
+    {
+        port.set();
+        // *dutyCycle1++;
+        // *dutyCycle2++;
+        OCR0A++;
+        OCR0B++;
+        PWM_COUNTER++;
+    }
+    else
+    {
+        port.clear();
+        // *dutyCycle1--;
+        // *dutyCycle2--;
+        OCR0B--;
+        OCR0A--;
+        PWM_COUNTER++;
+        if (PWM_COUNTER == 0x1FE)
+        {
+            PWM_COUNTER = 0x00;
+        }
+    }
+}
+
+/*
+    Funkcja Chain
+    FunChain(port, wektor mignięć)
+    Wykorzystuje klasę NewPort z biblioteki MyPort
+*/
+void FunChain(NewPort port, uint8_t vector[])
+{
+    static uint8_t i = 1;
+    if ((vector[i]) == 0)
+    {
+        port.clear();
+        i++;
+    }
+    else if ((vector[i]) == 1)
+    {
+        port.set();
+        i++;
+    }
+    else
+    {
+        i = 0;
     }
 }
