@@ -17,10 +17,12 @@
     0. You just DO WHAT THE FUCK YOU WANT TO.
 */
 
+//Definicja pliku nagłówkowego
 #ifndef MyFunction_hpp
 #define MyFunction_hpp
-
+//Biblioteki systemowe
 #include <avr/io.h>
+//Biblioteki lokalne
 #include <MyPort.hpp>
 
 void FunSOS(NewPort port);

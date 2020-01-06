@@ -16,11 +16,12 @@
 
     0. You just DO WHAT THE FUCK YOU WANT TO.
 */
-
+//definicja pliku nagłówkowego
 #ifndef MyPort_hpp
 #define MyPort_hpp
-
+//biblioteki systemowe
 #include <avr/io.h>
+
 class NewPort
 {
 public:

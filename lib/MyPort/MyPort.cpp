@@ -17,6 +17,7 @@
     0. You just DO WHAT THE FUCK YOU WANT TO.
 */
 
+//Biblioteki systemowe
 #include <avr/io.h>
 #include <MyPort.hpp>
 

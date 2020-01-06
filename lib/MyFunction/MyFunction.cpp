@@ -16,11 +16,12 @@
 
     0. You just DO WHAT THE FUCK YOU WANT TO.
 */
-
+//Plik nagłówkowy
 #include <MyFunction.hpp>
+//Biblioteki systemowe
 #include <avr/io.h>
 #include <avr/interrupt.h>
-
+//Biblioteki lokalne
 #include <MyPort.hpp>
 
 /*
