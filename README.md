@@ -7,3 +7,4 @@ Obejmuje
 - [x] Programowanie obiektowe
 - [ ] API Timera
 - [ ] Singletony
+- [ ] Dokumentacja kodu DOXYGEN
