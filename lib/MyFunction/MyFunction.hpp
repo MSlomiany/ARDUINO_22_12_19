@@ -26,7 +26,7 @@
 #include <MyPort.hpp>
 
 void FunSOS(NewPort port);
-void FunPWM(NewPort port); //, volatile uint8_t *dutyCycle1, volatile uint8_t *dutyCycle2);
+void FunPWM(NewPort port, volatile uint8_t &dutyCycle1, volatile uint8_t &dutyCycle2);
 void FunChain(NewPort port, uint8_t vector[]);
 
 #endif

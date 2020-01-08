@@ -108,8 +108,8 @@ int main()
         if (_20_MS_FLAG == TRUE)
         {
             _20_MS_FLAG = FALSE;
-            FunPWM(Debug); //, &OCR0A, &OCR0B)
-        }                  //KONIEC MODUŁU PWM
+            FunPWM(Debug, OCR0A, OCR0B);
+        } //KONIEC MODUŁU PWM
         //MODUŁ SOS
         if (_1_SEC_FLAG == TRUE) //wywołanie co 1 sekundę
         {

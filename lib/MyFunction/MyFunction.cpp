@@ -77,14 +77,14 @@ void FunSOS(NewPort port)
     FunPWM(port, &rejestrPWM1, &rejestrPWM2)
     Wykorzystuje klasę NewPort z biblioteki MyPort
 */
-void FunPWM(NewPort port) //, volatile uint8_t *dutyCycle1, volatile uint8_t *dutyCycle2)
+void FunPWM(NewPort port, volatile uint8_t &dutyCycle1, volatile uint8_t &dutyCycle2) //, volatile uint8_t *dutyCycle1, volatile uint8_t *dutyCycle2)
 {
     static uint16_t PWM_COUNTER;
     if (PWM_COUNTER < 0xFF)
     {
         port.set();
-        // *dutyCycle1++;
-        // *dutyCycle2++;
+        //dutyCycle1++;
+        //dutyCycle2++;
         OCR0A++;
         OCR0B++;
         PWM_COUNTER++;
@@ -92,10 +92,10 @@ void FunPWM(NewPort port) //, volatile uint8_t *dutyCycle1, volatile uint8_t *du
     else
     {
         port.clear();
-        // *dutyCycle1--;
-        // *dutyCycle2--;
-        OCR0B--;
-        OCR0A--;
+        dutyCycle1--;
+        dutyCycle2--;
+        //OCR0B--;
+        //OCR0A--;
         PWM_COUNTER++;
         if (PWM_COUNTER == 0x1FE)
         {
