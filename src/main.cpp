@@ -2,6 +2,11 @@
 #include <avr/io.h>        //mapa mikroprocesora
 #include <avr/interrupt.h> //obsluga przerwań
 //#include <avr/sleep.h>     //obsługa trybu uśpienia
+#include <avr/wdt.h>
+/**
+ * Biblioteki lokalne
+ * katalog lib/
+ */
 #include <MyPort.hpp>
 #include <MyFunction.hpp>
 /***********************DEFINICJE STAŁYCH************************/
