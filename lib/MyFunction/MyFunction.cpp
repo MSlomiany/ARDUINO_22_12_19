@@ -16,6 +16,11 @@
 
     0. You just DO WHAT THE FUCK YOU WANT TO.
 */
+
+/**
+ * \brief Biblioteka zawierająca funkcje użyte w programie
+ */
+
 //Plik nagłówkowy
 #include <MyFunction.hpp>
 //Biblioteki systemowe

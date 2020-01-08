@@ -1,9 +1,19 @@
+
+/*******************************************************************
+ * 
+ * \brief
+ * Plik main.cpp zawiera listę załączonych bibliotek
+ * oraz funkcję główną programu
+ * 
+ *******************************************************************/
+
 /***********************BIBLIOTEKI*******************************/
 #include <avr/io.h>        //mapa mikroprocesora
 #include <avr/interrupt.h> //obsluga przerwań
 //#include <avr/sleep.h>     //obsługa trybu uśpienia
 #include <avr/wdt.h>
 /**
+ * \brief
  * Biblioteki lokalne
  * katalog lib/
  */
