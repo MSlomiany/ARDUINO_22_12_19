@@ -6,6 +6,8 @@
  * oraz funkcję główną programu
  * 
  *******************************************************************/
+///Github check 25_01
+#define MY 7
 
 /***********************BIBLIOTEKI*******************************/
 #include <avr/io.h>        //mapa mikroprocesora
